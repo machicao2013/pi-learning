@@ -2,6 +2,8 @@
 
 本项目不使用 Wrangler Direct Upload。推荐使用 Cloudflare Pages 的 GitHub 集成：Cloudflare 连接 GitHub 仓库后，每次 `main` 分支更新会自动安装依赖、构建 VitePress 并发布静态站点。
 
+> 注意：不要选择 Cloudflare Workers 的 `wrangler deploy` 自动配置。Workers 静态资产上传会走 Wrangler API，如果项目目标只是文档站，应该使用 Pages 的 GitHub 集成。
+
 ## GitHub Actions
 
 仓库只保留 `CI` 工作流，用来在 pull request 和 `main` 推送时做构建校验：
@@ -40,6 +42,8 @@ main
 | Node.js version | `22` |
 
 保存后，Cloudflare 会从 GitHub 拉取代码并构建发布。
+
+如果 Cloudflare 当前项目日志里出现 `wrangler deploy`、`workers/scripts/.../assets-upload-session` 或 `wrangler.jsonc` 相关内容，说明它创建成了 Workers 项目或沿用了 Workers 自动配置。请改用 Pages 项目，或把构建命令改成 `npm ci && npm run build`，输出目录改成 `docs/.vitepress/dist`。
 
 ## 私有访问
 
