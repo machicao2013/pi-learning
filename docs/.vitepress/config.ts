@@ -6,6 +6,25 @@ export default defineConfig({
   description: "面向 Pi 的中文学习教程：上手、源码研读与 Harness 工程化",
   cleanUrls: false,
   lastUpdated: true,
+  markdown: {
+    config(md) {
+      const defaultFence =
+        md.renderer.rules.fence ||
+        ((tokens, idx, options, env, self) => self.renderToken(tokens, idx, options));
+
+      md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        const token = tokens[idx];
+        const language = token.info.trim().split(/\s+/)[0];
+
+        if (language === "mermaid") {
+          const encoded = encodeURIComponent(token.content);
+          return `<ClientOnly><MermaidDiagram code="${encoded}" /></ClientOnly>`;
+        }
+
+        return defaultFence(tokens, idx, options, env, self);
+      };
+    }
+  },
   themeConfig: {
     nav: [
       { text: "讲义", link: "/lectures/" },
