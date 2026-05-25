@@ -2,7 +2,7 @@
 
 Learn Pi Agent Harness 是一份面向 [earendil-works/pi](https://github.com/earendil-works/pi) 的中文学习教程。本教程把 Pi 的上手使用、源码研读和 Harness Engineering（工具马具/脚手架工程）实践放在同一条学习路径里，帮助你把 terminal coding agent 变成可复用、可验证、可交接的工作系统。
 
-本教程参考 [Learn Harness Engineering](https://walkinglabs.github.io/learn-harness-engineering/zh/) 的组织方式，分为理论讲义、实战项目和开箱即用的资料库。
+本教程分为理论讲义、实战项目和开箱即用的资料库。
 
 ## 开始学习
 
