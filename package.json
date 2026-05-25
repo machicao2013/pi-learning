@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vitepress docs --host 0.0.0.0",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs --host 0.0.0.0"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
     "vitepress": "^1.6.4",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "wrangler": "^4.94.0"
   }
 }
